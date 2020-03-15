@@ -1,6 +1,8 @@
 import React, {useState, Fragment} from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
+import GithubState from "./context/github/state";
+
 import "./App.css";
 
 import Navbar from "./components/layout/Navbar";
@@ -55,40 +57,42 @@ const App = () => {
   };
 
   return (
-    <div>
-      <Navbar />
-      <div className="container">
-        <Router>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <Fragment>
-                  {alert && (
-                    <Alert message={alert.message} color={alert.color} />
-                  )}
-                  <SearchForm
-                    searchUsers={searchUsers}
-                    clearUsers={clearUsers}
-                    showAlert={showAlert}
-                    showClearButton={users.length > 0}
-                  />
-                  <UserList users={users} loading={loading} />
-                </Fragment>
-              )}
-            />
-            <Route
-              exact
-              path="/users/:userName"
-              render={_ => (
-                <UserPage user={user} getUser={getUser} repos={repos} />
-              )}
-            />
-          </Switch>
-        </Router>
+    <GithubState>
+      <div>
+        <Navbar />
+        <div className="container">
+          <Router>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <Fragment>
+                    {alert && (
+                      <Alert message={alert.message} color={alert.color} />
+                    )}
+                    <SearchForm
+                      searchUsers={searchUsers}
+                      clearUsers={clearUsers}
+                      showAlert={showAlert}
+                      showClearButton={users.length > 0}
+                    />
+                    <UserList users={users} loading={loading} />
+                  </Fragment>
+                )}
+              />
+              <Route
+                exact
+                path="/users/:userName"
+                render={_ => (
+                  <UserPage user={user} getUser={getUser} repos={repos} />
+                )}
+              />
+            </Switch>
+          </Router>
+        </div>
       </div>
-    </div>
+    </GithubState>
   );
 };
 
