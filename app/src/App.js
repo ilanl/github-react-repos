@@ -9,6 +9,7 @@ import "./App.css";
 
 import HomePage from "./components/pages/HomePage";
 import UserPage from "./components/pages/UserPage";
+import NotFound from "./components/pages/NotFound";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
               <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/users/:userName" component={UserPage} />
+                <Route component={NotFound} />
               </Switch>
             </div>
           </div>
