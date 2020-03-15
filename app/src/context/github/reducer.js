@@ -11,13 +11,13 @@ export default (state, action) => {
     case SEARCH_USERS:
       return {
         ...state,
-        users: action.payload,
+        users: action.users,
         loading: false
       };
     case GET_USER:
       return {
         ...state,
-        user: action.payload,
+        user: action.user,
         loading: false
       };
     case CLEAR_USERS:
@@ -29,7 +29,7 @@ export default (state, action) => {
     case GET_REPOS: {
       return {
         ...state,
-        repos: action.payload,
+        repos: action.repos,
         loading: false
       };
     }

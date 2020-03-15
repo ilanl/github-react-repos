@@ -1,4 +1,6 @@
-import React, {useEffect, Fragment} from "react";
+import React, {useState, useContext, useEffect, Fragment} from "react";
+import GithubContext from "../../context/github/context";
+
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -6,15 +8,16 @@ import {useParams} from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import RepoList from "../repos/RepoList";
 
-const UserPage = ({user, getUser, repos}) => {
+const UserPage = () => {
   const {userName} = useParams();
-
+  const {user, repos, loading, getUser} = useContext(GithubContext);
+  
   useEffect(() => {
     getUser(userName);
     // eslint-disable-next-line
   }, []);
 
-  if (!user || !repos) {
+  if (loading) {
     return <Spinner />;
   }
 
@@ -34,7 +37,6 @@ const UserPage = ({user, getUser, repos}) => {
     hireable
   } = user;
 
-  console.log(user, repos);
   return (
     <Fragment>
       <Link to="/" className="btn btn-light">

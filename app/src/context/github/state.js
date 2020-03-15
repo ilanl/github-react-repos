@@ -1,7 +1,7 @@
 import React, {useReducer} from "react";
-import axios from "axios";
 import GithubContext from "./context";
 import GithubReducer from "./reducer";
+import api from "../../api";
 
 import {
   SEARCH_USERS,
@@ -14,7 +14,7 @@ import {
 const GithubState = props => {
   const initialState = {
     users: [],
-    user: null,
+    user: {},
     repos: [],
     loading: false
   };
@@ -22,17 +22,42 @@ const GithubState = props => {
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
   // Search Users
+  const searchUsers = async text => {
+    setLoading(true);
+    const users = await api.searchUsers(text);
+    dispatch({type: SEARCH_USERS, users});
+  };
+
   // Get User
-  // Get Repos
-  // Set Loading
+  const getUser = async userName => {
+    setLoading(true);
+    const [user, repos] = await Promise.all([
+      api.getUser(userName),
+      api.getUserRepos(userName)
+    ]);
+    dispatch({type: GET_USER, user});
+    dispatch({type: GET_REPOS, repos});
+  };
+
+  const clearUsers = () => {
+    dispatch({type: CLEAR_USERS});
+  };
+
+  const setLoading = () => {
+    dispatch({type: SET_LOADING});
+  };
 
   return (
     <GithubContext.Provider
       value={{
         users: state.users,
-        users: state.user,
+        user: state.user,
         repos: state.repos,
-        loading: state.loading
+        loading: state.loading,
+        searchUsers,
+        clearUsers,
+        setLoading,
+        getUser
       }}
     >
       {props.children}
