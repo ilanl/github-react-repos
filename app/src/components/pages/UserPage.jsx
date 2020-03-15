@@ -1,17 +1,14 @@
-import React, {useState, useContext, useEffect, Fragment} from "react";
+import React, {useContext, useEffect, Fragment} from "react";
 import GithubContext from "../../context/github/context";
 
-import {Link} from "react-router-dom";
-import PropTypes from "prop-types";
-
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import RepoList from "../repos/RepoList";
 
 const UserPage = () => {
   const {userName} = useParams();
   const {user, repos, loading, getUser} = useContext(GithubContext);
-  
+
   useEffect(() => {
     getUser(userName);
     // eslint-disable-next-line
@@ -108,24 +105,6 @@ const UserPage = () => {
       <RepoList repos={repos} />
     </Fragment>
   );
-};
-
-UserPage.propTypes = {
-  user: PropTypes.shape({
-    login: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    avatar_url: PropTypes.string.isRequired,
-    html_url: PropTypes.string.isRequired,
-    name: PropTypes.string,
-    company: PropTypes.string,
-    blog: PropTypes.string,
-    location: PropTypes.string,
-    email: PropTypes.string,
-    hireable: PropTypes.bool,
-    bio: PropTypes.string,
-    public_repos: PropTypes.number,
-    public_gists: PropTypes.number
-  })
 };
 
 export default UserPage;
