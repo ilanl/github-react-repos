@@ -6,11 +6,8 @@ import AlertState from "./context/alert/state";
 
 import Navbar from "./components/layout/Navbar";
 
-// Style
-import "./App.css";
-
-// import "./styles/Bootstrap.css";
-import "./styles/Alert.css";
+// Styles
+import "./styles/Layout.css";
 import "./styles/Search.css";
 import "./styles/Weather.css";
 import "./styles/Movie.css";

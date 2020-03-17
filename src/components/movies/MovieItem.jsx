@@ -20,8 +20,7 @@ MovieItem.propTypes = {
   movie: PropTypes.shape({
     imdbID: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
-    Year: PropTypes.string.isRequired,
-    Type: PropTypes.string.isRequired
+    Year: PropTypes.string.isRequired
   }).isRequired
 }
 

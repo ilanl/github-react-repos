@@ -11,7 +11,6 @@ export const usePosition = (watch = false, settings = defaultOptions) => {
   const [error, setError] = useState(null);
 
   const onChange = ({coords, timestamp}) => {
-    console.log("got new location", {...coords}, timestamp);
     setPosition({
       latitude: coords.latitude,
       longitude: coords.longitude,
@@ -19,7 +18,7 @@ export const usePosition = (watch = false, settings = defaultOptions) => {
       timestamp
     });
   };
-
+  
   const onError = error => {
     setError(error.message);
   };

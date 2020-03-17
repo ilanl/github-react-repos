@@ -14,7 +14,7 @@ const AlertState = props => {
 
   // Set Alert
 
-  const showAlert = (message, color, duration = 5000) => {
+  const showAlert = (message, color, duration = 3000) => {
     dispatch({type: SET_ALERT, message, color});
     setTimeout(() => {
       dispatch({type: REMOVE_ALERT});

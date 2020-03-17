@@ -2,8 +2,12 @@
   width: 180px;
 }
 
+.movie-field {
+  font-weight: bold;
+}
+
 .poster-l {
-  width: 200px;
+  width: 250px;
 }
 
 .empty-movie-list {
@@ -62,10 +66,10 @@
 }
 
 .movie-tag {
-  border: 2px solid black;
+  color: #333;
+  border: 2px solid #a6a6ad54;
   border-radius: 4px;
   display: inline-block;
-  font-size: 14px;
-  padding: 3px 5px;
+  padding: 3px 10px;
   margin: 5px;
 }

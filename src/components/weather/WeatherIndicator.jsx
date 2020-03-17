@@ -9,7 +9,6 @@ const WeatherIndicator = ({ watch, settings }) => {
   const { latitude, longitude } = usePosition(watch, settings)
 
   useEffect(() => {
-    console.log('getting the weather for location', latitude, longitude)
     if (latitude && longitude) {
       api
         .getWeatherDataByCoords(latitude, longitude)

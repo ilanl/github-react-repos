@@ -31,12 +31,12 @@ const MoviePage = () => {
 
   const poster =
     Poster !== 'N/A' ? (
-      <img src={Poster} alt={Poster} />
+      <img src={Poster} className='poster-l' alt={Poster} />
     ) : (
-      <h4>There is no poster available for this film</h4>
+      <h4>No poster available</h4>
     )
 
-  const plot = Plot !== 'N/A' ? Plot : ''
+  const plot = Plot !== 'N/A' ? <p>{Plot}</p> : null
 
   const genres =
     Genre &&
@@ -48,54 +48,48 @@ const MoviePage = () => {
 
   return (
     <Fragment>
-      <div>
-        <div className='row'>
-          <div className='s12'>
-            <Link to='/' className='btn btn-light'>
-              Back
-            </Link>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col-12'>
-            <h1>{Title}</h1>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col-6 center-align poster-l'>{poster}</div>
-          <div className='col-6'>
-            <ul className='collection'>
+      <Link to='/' className='btn btn-light'>
+        Back
+      </Link>
+      <h1>{Title}</h1>
+      <div style={{ width: '100%', overflow: 'hidden' }}>
+        <div style={{ width: '300px', float: 'left' }}>{poster}</div>
+        <div style={{ marginLeft: '310px' }}>
+          <ul>
+            {Released && (
               <li>
-                <span className='red-text'>Released:</span> {Released}
+                <span className='movie-field'>Released:</span> {Released}
               </li>
-
-              {Genre && (
-                <li>
-                  <span className='red-text'>Genre:</span> {genres}
-                </li>
-              )}
-
+            )}
+            {Rated && (
               <li>
-                <span className='red-text'>Rating:</span> {Rated}
+                <span className='movie-field'>Rating:</span> {Rated}
               </li>
+            )}
+            {Runtime && (
               <li>
-                <span className='red-text'>Length:</span> {Runtime}
+                <span className='movie-field'>Length:</span> {Runtime}
               </li>
+            )}
+            {Director && (
               <li>
-                <span className='red-text'>Director(s):</span> {Director}
+                <span className='movie-field'>Director(s):</span> {Director}
               </li>
+            )}
+            {Actors && (
               <li>
-                <span className='red-text'>Actors:</span> {Actors}
+                <span className='movie-field'>Actors:</span> {Actors}
               </li>
-            </ul>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col-12'>
-            <p>{plot}</p>
-          </div>
+            )}
+            {Genre && (
+              <li style={{ paddingTop: '25px' }}>
+                <span className='movie-field'>Genre:</span> {genres}
+              </li>
+            )}
+          </ul>
         </div>
       </div>
+      <div style={{ width: '100%', overflow: 'hidden' }}>{plot}</div>
     </Fragment>
   )
 }

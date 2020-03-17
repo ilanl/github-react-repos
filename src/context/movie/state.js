@@ -3,13 +3,7 @@ import MovieContext from "./context";
 import MovieReducer from "./reducer";
 import * as api from "../../api/api.movie";
 
-import {
-  SEARCH_MOVIES,
-  SET_LOADING,
-  CLEAR_MOVIES,
-  GET_MOVIE,
-  SET_ALERT
-} from "../types";
+import {SEARCH_MOVIES, SET_LOADING, CLEAR_MOVIES, GET_MOVIE} from "../types";
 
 const MovieState = props => {
   const initialState = {
@@ -26,7 +20,7 @@ const MovieState = props => {
     const movies = await api.searchMovies(text);
     dispatch({type: SEARCH_MOVIES, movies});
   };
-  
+
   // Get Movie By Id
   const getMovieById = async id => {
     setLoading(true);
@@ -41,9 +35,7 @@ const MovieState = props => {
   const setLoading = () => {
     dispatch({type: SET_LOADING});
   };
-
-  console.log({...state});
-
+  
   return (
     <MovieContext.Provider
       value={{
