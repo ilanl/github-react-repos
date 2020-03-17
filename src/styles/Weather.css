@@ -1,0 +1,12 @@
+.weather-container > li {
+  margin: auto;
+}
+
+.weather {
+  height: 50px;
+  width: 50px;
+}
+
+.weather-icon {
+  font-size: 26px;
+}
