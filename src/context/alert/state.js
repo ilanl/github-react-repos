@@ -2,10 +2,7 @@ import React, {useReducer} from "react";
 import AlertContext from "./context";
 import AlertReducer from "./reducer";
 
-import {
-  SET_ALERT,
-  REMOVE_ALERT
-} from "../types";
+import {SET_ALERT, REMOVE_ALERT} from "../types";
 
 const AlertState = props => {
   const initialState = {
@@ -16,15 +13,15 @@ const AlertState = props => {
   const [state, dispatch] = useReducer(AlertReducer, initialState);
 
   // Set Alert
-  
-  const showAlert = (message, color) => {
-    dispatch({ type: SET_ALERT, message, color})
+
+  const showAlert = (message, color, duration = 5000) => {
+    dispatch({type: SET_ALERT, message, color});
     setTimeout(() => {
-      dispatch({ type: REMOVE_ALERT})
-    }, 5000);
+      dispatch({type: REMOVE_ALERT});
+    }, duration);
   };
-  
-  const { message, color } = state
+
+  const {message, color} = state;
 
   return (
     <AlertContext.Provider

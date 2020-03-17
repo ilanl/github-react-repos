@@ -6,7 +6,7 @@ const Alert = () => {
   return (
     message && (
       <div className={`alert alert-${color}`}>
-        <i className="fas fa-info-circle" />
+        <i className="fas fa-info-circle alert-icon" />
         {message}
       </div>
     )

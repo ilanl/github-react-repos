@@ -18,8 +18,8 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: "GitHub Finder",
-  icon: "fab fa-github"
+  title: "PopCorn",
+  icon: "fab fa-chromecast"
 };
 
 export default Navbar;

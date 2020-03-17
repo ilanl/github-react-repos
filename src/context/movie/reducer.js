@@ -1,38 +1,25 @@
-import {
-  SEARCH_USERS,
-  SET_LOADING,
-  CLEAR_USERS,
-  GET_USER,
-  GET_REPOS
-} from "../types";
+import {SEARCH_MOVIES, SET_LOADING, CLEAR_MOVIES, GET_MOVIE} from "../types";
 
 export default (state, action) => {
   switch (action.type) {
-    case SEARCH_USERS:
+    case SEARCH_MOVIES:
       return {
         ...state,
-        users: action.users,
+        movies: action.movies,
         loading: false
       };
-    case GET_USER:
+    case GET_MOVIE:
       return {
         ...state,
-        user: action.user,
+        movie: action.movie,
         loading: false
       };
-    case CLEAR_USERS:
+    case CLEAR_MOVIES:
       return {
         ...state,
-        users: [],
+        movies: [],
         loading: false
       };
-    case GET_REPOS: {
-      return {
-        ...state,
-        repos: action.repos,
-        loading: false
-      };
-    }
     case SET_LOADING:
       return {
         ...state,
