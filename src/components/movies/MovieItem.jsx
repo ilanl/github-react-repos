@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-const MovieItem = ({ movie: { Title, Year, imdbID, Type, Poster, Genre } }) => {
+const MovieItem = ({ movie: { Title, Year, imdbID, Poster } }) => {
   return (
     <div className='card text-center'>
       <img src={Poster} alt='' className='poster-img poster-s' />
@@ -16,7 +16,6 @@ const MovieItem = ({ movie: { Title, Year, imdbID, Type, Poster, Genre } }) => {
   )
 }
 
-// TODO: Good API
 MovieItem.propTypes = {
   movie: PropTypes.shape({
     imdbID: PropTypes.string.isRequired,
